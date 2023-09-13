@@ -1,7 +1,7 @@
+import 'package:flutter_gen_core/generators/integrations/integration.dart';
 import 'package:flutter_gen_core/generators/integrations/svg_integration.dart';
+import 'package:flutter_gen_core/settings/asset_type.dart';
 
-import '../../settings/asset_type.dart';
-import 'integration.dart';
 
 /// An implementation of [Integration] for `flutter_svg` and `vector_graphics`.
 ///

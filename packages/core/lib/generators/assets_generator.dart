@@ -10,6 +10,7 @@ import 'package:flutter_gen_core/generators/integrations/integration.dart';
 import 'package:flutter_gen_core/generators/integrations/lottie_integration.dart';
 import 'package:flutter_gen_core/generators/integrations/rive_integration.dart';
 import 'package:flutter_gen_core/generators/integrations/svg_integration.dart';
+import 'package:flutter_gen_core/generators/integrations/vector_graphics_integration.dart';
 import 'package:flutter_gen_core/settings/asset_type.dart';
 import 'package:flutter_gen_core/settings/config.dart';
 import 'package:flutter_gen_core/settings/pubspec.dart';
@@ -17,19 +18,6 @@ import 'package:flutter_gen_core/utils/error.dart';
 import 'package:flutter_gen_core/utils/string.dart';
 import 'package:glob/glob.dart';
 import 'package:path/path.dart';
-
-import '../settings/asset_type.dart';
-import '../settings/config.dart';
-import '../settings/pubspec.dart';
-import '../utils/error.dart';
-import '../utils/string.dart';
-import 'generator_helper.dart';
-import 'integrations/flare_integration.dart';
-import 'integrations/integration.dart';
-import 'integrations/rive_integration.dart';
-import 'integrations/svg_integration.dart';
-import 'integrations/lottie_integration.dart';
-import 'integrations/vector_graphics_integration.dart';
 
 class AssetsGenConfig {
   AssetsGenConfig._(
