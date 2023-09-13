@@ -81,7 +81,7 @@ class VectorGraphicsIntegration extends Integration {
           : color == null
               ? null
               : ColorFilter.mode(color, colorBlendMode),
-      clipBehavior: clipBehavior,
+      clipBehavior: clipBehavior ?? Clip.hardEdge,
       cacheColorFilter: cacheColorFilter,
     );
   }
