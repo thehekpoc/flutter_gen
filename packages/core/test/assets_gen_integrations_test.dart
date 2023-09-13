@@ -3,6 +3,7 @@ import 'package:flutter_gen_core/generators/integrations/flare_integration.dart'
 import 'package:flutter_gen_core/generators/integrations/lottie_integration.dart';
 import 'package:flutter_gen_core/generators/integrations/rive_integration.dart';
 import 'package:flutter_gen_core/generators/integrations/svg_integration.dart';
+import 'package:flutter_gen_core/generators/integrations/vector_graphics_integration.dart';
 import 'package:flutter_gen_core/settings/asset_type.dart';
 import 'package:path/path.dart' as p;
 import 'package:test/test.dart';
@@ -145,6 +146,46 @@ void main() {
       expect(integration.classOutput.contains('String? package,'), isTrue);
 
       final integrationWithPackage = LottieIntegration('package_name');
+      expect(
+        integrationWithPackage.classOutput
+            .contains('String? package = \'package_name\','),
+        isTrue,
+      );
+    });
+
+    test('Assets with SvgVec integrations on pubspec.yaml', () async {
+      const pubspec =
+          'test_resources/pubspec_assets_vector_graphics_integrations.yaml';
+      const fact =
+          'test_resources/actual_data/assets_vector_graphics_integrations.gen.dart';
+      const generated =
+          'test_resources/lib/gen/assets_vector_graphics_integrations.gen.dart';
+
+      await expectedAssetsGen(pubspec, generated, fact);
+
+      final integration = VectorGraphicsIntegration('', SvgIntegration(''));
+      expect(integration.className, 'SvgVecGenImage');
+      expect(integration.classInstantiate('assets/path'),
+          'SvgVecGenImage(\'assets/path\')');
+      expect(
+          integration.isSupport(
+              AssetType(rootPath: resPath, path: 'assets/path/dog.svg.vec')),
+          isTrue);
+      expect(
+          integration.isSupport(
+              AssetType(rootPath: resPath, path: 'assets/path/dog.vec')),
+          isTrue);
+      expect(
+          integration.isSupport(
+              AssetType(rootPath: resPath, path: 'assets/path/dog.svg')),
+          isFalse);
+      expect(integration.isConstConstructor, isTrue);
+      expect(integration.classOutput.contains('String? package,'), isTrue);
+
+      final integrationWithPackage = VectorGraphicsIntegration(
+        'package_name',
+        SvgIntegration('package_name'),
+      );
       expect(
         integrationWithPackage.classOutput
             .contains('String? package = \'package_name\','),
